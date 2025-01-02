@@ -21,7 +21,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name= "Detalles_Pedido")
-public class DetallePedido {
+public class Detallepedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +42,7 @@ public class DetallePedido {
     private BigDecimal subtotal;
 
     // Constructor sin argumentos
-    public DetallePedido() {}
+    public Detallepedido() {}
 
     public Long getId() {
         return id;
