@@ -39,4 +39,8 @@ public interface UserRepo extends JpaRepository<Usuario, Long> {
      * @return true si el correo electrónico ya existe; false si no existe.
      */
   boolean existsByEmail(String email);
+  
+  
+  
+   Optional<Usuario> findByEmail(String email);
 }

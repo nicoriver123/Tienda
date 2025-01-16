@@ -35,9 +35,23 @@ public class Usuario {
 
     @Column(nullable = false, unique = true)
     private String email;
-    
+
     @Column(name = "fecha_registro", nullable = false, updatable = false)
     private LocalDateTime fechaRegistro;
+
+     @Column(name = "enabled", nullable = false)
+    private boolean enabled = false;  // cambiar nombre del campo
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+   
+
 
     public Long getId() {
         return id;

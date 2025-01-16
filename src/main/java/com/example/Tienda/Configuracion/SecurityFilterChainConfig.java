@@ -47,6 +47,7 @@ public class SecurityFilterChainConfig {
                 requestMatcher -> requestMatcher
                         .requestMatchers("/api/auth/login/**").permitAll() // Permite el acceso público a las rutas de login.
                         .requestMatchers("/api/auth/registrar/**").permitAll()// Permite el acceso público a las rutas de registro.
+                        .requestMatchers("/api/auth/verifyEmail/**").permitAll()
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud.
         );
 

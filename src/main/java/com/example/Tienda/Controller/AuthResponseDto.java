@@ -13,7 +13,8 @@ package com.example.Tienda.Controller;
 // Este record representa la respuesta que se envía al cliente después de un intento de autenticación o registro.
 public record AuthResponseDto(
     String token,        // Contiene el token JWT generado si la autenticación o el registro fueron exitosos.
-    AuthStatus authStatus // Representa el estado de la operación de autenticación o registro.
+    AuthStatus authStatus ,// Representa el estado de la operación de autenticación o registro.
+        String message
 ) {
    
 }
