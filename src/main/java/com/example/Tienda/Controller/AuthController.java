@@ -50,40 +50,39 @@ public class AuthController {
      * @return Respuesta HTTP con un token JWT y el estado de autenticación.
      */
     @PostMapping("/login") // Define que este método manejará solicitudes POST a "/api/auth/login".
-    public ResponseEntity<AuthResponseDto> login(@RequestBody AuthRequestDto authRequestDto) {
-        try {
+public ResponseEntity<AuthResponseDto> login(@RequestBody AuthRequestDto authRequestDto) {
+    try {
             // Llama al servicio para autenticar al usuario y generar un token JWT
-            var jwtToken = authService.login(authRequestDto.username(), authRequestDto.password());
+        var jwtToken = authService.login(authRequestDto.username(), authRequestDto.password());
 
             // Crea un objeto de respuesta con el token y el estado de éxito
-            var authResponseDto = new AuthResponseDto(
-                    jwtToken,
-                    AuthStatus.LOGIN_SUCCESS,
-                    "Inicio de sesión exitoso"
-            );
+        var authResponseDto = new AuthResponseDto(
+                jwtToken,
+                AuthStatus.LOGIN_SUCCESS,
+                "Inicio de sesión exitoso"
+        );
 
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(authResponseDto);
 
-        } catch (Exception e) {
-            String errorMessage = e.getMessage();
-            AuthStatus status = AuthStatus.LOGIN_FAILED;
+    } catch (Exception e) {
+        String errorMessage = e.getMessage();
+        AuthStatus status = AuthStatus.LOGIN_FAILED;
 
-            // Personalizar mensajes según el tipo de error
-            if (errorMessage.contains("Bad credentials")) {
-                errorMessage = "Usuario o contraseña incorrectos";
-            } else if (errorMessage.contains("User not found")) {
-                errorMessage = "Usuario no encontrado";
-            }
-
-            var authResponseDto = new AuthResponseDto(null, status, errorMessage);
-
-            return ResponseEntity
-                    .status(HttpStatus.UNAUTHORIZED)
-                    .body(authResponseDto);
+        if (errorMessage.contains("Usuario no encontrado")) {
+            errorMessage = "Usuario no encontrado";
+        } else if (errorMessage.contains("La cuenta no ha sido verificada")) {
+            errorMessage = "La cuenta no ha sido verificada. Por favor, revise su correo electrónico.";
+        } else if (errorMessage.contains("Bad credentials")) {
+            errorMessage = "Usuario o contraseña incorrectos";
         }
+
+        var authResponseDto = new AuthResponseDto(null, status, errorMessage);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(authResponseDto);
     }
+}
+
 
     /**
      * Endpoint para registrar un nuevo usuario (sign-up).

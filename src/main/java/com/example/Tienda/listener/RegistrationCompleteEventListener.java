@@ -80,7 +80,7 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
         var messageHelper = new MimeMessageHelper(message);
 
         // Configurar remitente, destinatario, asunto y contenido.
-        messageHelper.setFrom("26@gmail.com", senderName);
+        messageHelper.setFrom("pruebatech370@gmail.com", senderName);
         messageHelper.setTo(theUser.getEmail());
         messageHelper.setSubject(subject);
         messageHelper.setText(mailContent, true); // true indica que el contenido es HTML.

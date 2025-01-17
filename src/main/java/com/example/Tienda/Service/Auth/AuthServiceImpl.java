@@ -59,10 +59,24 @@ public class AuthServiceImpl implements AuthService {
      */
     @Override
     public String login(String username, String password) {
-        // Crea un token de autenticación con el nombre de usuario y la contraseña.
+        // Busca al usuario en la base de datos
+        Optional<Usuario> optionalUser = userRepo.findByUsername(username);
+
+        if (optionalUser.isEmpty()) {
+            throw new RuntimeException("Usuario no encontrado");
+        }
+
+        Usuario user = optionalUser.get();
+
+        // Verifica si el usuario está habilitado
+        if (!user.isEnabled()) {
+            throw new RuntimeException("La cuenta no ha sido verificada");
+        }
+
+        // Crea un token de autenticación con el nombre de usuario y la contraseña
         var authToken = new UsernamePasswordAuthenticationToken(username, password);
 
-        // Autentica al usuario utilizando el AuthenticationManager.
+        // Autentica al usuario utilizando el AuthenticationManager
         var authenticate = authenticationManager.authenticate(authToken);
 
         // Genera y devuelve un token JWT utilizando el nombre de usuario autenticado.

@@ -25,9 +25,9 @@ public class SecurityFilterChainConfig {
 
     // Constructor de la clase que inicializa el `authenticationEntryPoint`.
     public SecurityFilterChainConfig(AuthenticationEntryPoint authenticationEntryPoint, JWTAuthenticationFilter jwtAuthenticationFilter) {
-    this.authenticationEntryPoint = authenticationEntryPoint;
-    this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-  }
+        this.authenticationEntryPoint = authenticationEntryPoint;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    }
 
     // Definición de un bean que configura la seguridad para las solicitudes HTTP.
     @Bean
@@ -54,13 +54,13 @@ public class SecurityFilterChainConfig {
         // 4. Configura cómo manejar excepciones de autenticación.
         httpSecurity.exceptionHandling(
                 exceptionConfig -> exceptionConfig.authenticationEntryPoint(authenticationEntryPoint)
-                // Utiliza el punto de entrada personalizado para manejar errores de autenticación.
+        // Utiliza el punto de entrada personalizado para manejar errores de autenticación.
         );
 
         // 5. Configura la gestión de sesiones.
         httpSecurity.sessionManagement(
                 sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                // Configura la política de sesiones como STATELESS, lo que significa que no se utilizarán sesiones de usuario (ideal para APIs con JWT).
+        // Configura la política de sesiones como STATELESS, lo que significa que no se utilizarán sesiones de usuario (ideal para APIs con JWT).
         );
 
         // 6. Agrega un filtro personalizado antes del filtro estándar de autenticación de usuario y contraseña.
