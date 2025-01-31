@@ -33,8 +33,8 @@ public class VerificationToken {
     @Column(nullable = false)
     private Date expirationTime;
     
-    // Tiempo de expiración del token en minutos (valor de 15 minutos por defecto).
-    private static final int EXPIRATION_TIME = 15;
+    // Tiempo de expiración del token en minutos (valor de 30 minutos por defecto).
+    private static final int EXPIRATION_TIME = 30;
     
     // Relación uno a uno con el usuario, que se obtiene de manera 'eager' (siempre se carga cuando se obtiene el token).
     @OneToOne(fetch = FetchType.EAGER)

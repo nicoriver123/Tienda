@@ -59,9 +59,9 @@ public ResponseEntity<AuthResponseDto> login(@RequestBody AuthRequestDto authReq
         var authResponseDto = new AuthResponseDto(
                 jwtToken,
                 AuthStatus.LOGIN_SUCCESS,
-                "Inicio de sesión exitoso"
+                "Usuario creado con exito. Por favor, revise, tu correo electronico y verifica tu cuenta para completar el registro"
         );
-
+        
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(authResponseDto);

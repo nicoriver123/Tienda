@@ -34,7 +34,6 @@ public class SecurityFilterChainConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         // Configuración de seguridad para solicitudes HTTP.
-        
         // 1. Deshabilita la configuración de CORS (Cross-Origin Resource Sharing). 
         // Esto significa que no se aplicarán restricciones para solicitudes desde otros orígenes.
         httpSecurity.cors(corsConfig -> corsConfig.disable());
@@ -48,6 +47,10 @@ public class SecurityFilterChainConfig {
                         .requestMatchers("/api/auth/login/**").permitAll() // Permite el acceso público a las rutas de login.
                         .requestMatchers("/api/auth/registrar/**").permitAll()// Permite el acceso público a las rutas de registro.
                         .requestMatchers("/api/auth/verifyEmail/**").permitAll()
+                        .requestMatchers("/api/productos/**").permitAll()
+                        .requestMatchers("/api/productos/crear/**").permitAll()
+                        .requestMatchers("/api/productos/actualizar/**").permitAll()
+                        .requestMatchers("/api/uploads/**").permitAll()
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud.
         );
 

@@ -39,6 +39,19 @@ public class Producto {
     @Column(nullable= false)
     private Integer stock;
     
+    @Column (nullable= true)
+    private String imagenUrl;
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
+    }
+    
+    
+    
     public Producto(){}
 
     public Long getId() {
