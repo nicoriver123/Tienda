@@ -31,7 +31,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController // Indica que esta clase es un controlador en una aplicación REST y que los métodos devuelven directamente los datos al cliente (en formato JSON, por ejemplo).
 @RequestMapping("/api/auth") // Define la ruta base para los endpoints de este controlador: "/api/auth".
 @RequiredArgsConstructor
-@CrossOrigin
 public class AuthController {
 
     @Autowired
@@ -59,7 +58,7 @@ public ResponseEntity<AuthResponseDto> login(@RequestBody AuthRequestDto authReq
         var authResponseDto = new AuthResponseDto(
                 jwtToken,
                 AuthStatus.LOGIN_SUCCESS,
-                "Usuario creado con exito. Por favor, revise, tu correo electronico y verifica tu cuenta para completar el registro"
+                "Inicio de sesion exitoso"
         );
         
             return ResponseEntity
@@ -101,7 +100,7 @@ public ResponseEntity<AuthResponseDto> login(@RequestBody AuthRequestDto authReq
             // Crea un objeto de respuesta con el token y el estado de éxito.
             var authResponseDto = new AuthResponseDto(jwtToken,
                     AuthStatus.USER_CREATED_SUCCESSFULLY,
-                    "Usuario registrado exitosamente");
+                    "Usuario creado con exito. Por favor, revise, tu correo electronico y verifica tu cuenta para completar el registro");
 
             return ResponseEntity
                     .status(HttpStatus.OK)

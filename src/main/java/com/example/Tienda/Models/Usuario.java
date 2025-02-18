@@ -41,7 +41,31 @@ public class Usuario {
 
      @Column(name = "enabled", nullable = false)
     private boolean enabled = false;  // cambiar nombre del campo
+     
+     @Column(name="pais", nullable =true)
+     private String pais;
+     
+     @Column (name="telefono" , nullable=true)
+     private String telefeno;
 
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public String getTelefeno() {
+        return telefeno;
+    }
+
+    public void setTelefeno(String telefeno) {
+        this.telefeno = telefeno;
+    }
+     
+     
+     
     public boolean isEnabled() {
         return enabled;
     }
