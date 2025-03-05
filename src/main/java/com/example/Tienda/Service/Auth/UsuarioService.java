@@ -14,4 +14,6 @@ public interface UsuarioService {
     
     Usuario obtenerUsuarioPorUsername(String username);
     
+    Usuario actualizarUsuario(Usuario usuario);
+    
 }
