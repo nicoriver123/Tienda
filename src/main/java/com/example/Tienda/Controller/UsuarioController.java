@@ -119,7 +119,7 @@ public class UsuarioController {
      * @param imagen Archivo de imagen enviado por el usuario.
      * @return ResponseEntity con el usuario actualizado o un error.
      */
-    @PutMapping("/perfil/actualizar-imagen")
+    @PutMapping("/perfil/actualizar/imagen")
     public ResponseEntity<Usuario> actualizarImagenPerfil(
             @AuthenticationPrincipal UserDetails userDetails,
             @RequestParam("imagen") MultipartFile imagen) {
